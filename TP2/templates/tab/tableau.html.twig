@@ -8,19 +8,19 @@
             <tr>
                 <th scope="col">N°</th>
                 <th scope="col">Nom</th>
-                <th scope="col">Couleur</th>
+                <th scope="col">Age</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
             <tbody>
                 {% for row in tableau %}
                     <tr>
-                        <td>{{ row.id }}</td>
+                        <td>{{ loop.index }}</td>
                         <td>{{ row.nom}}</td>
-                        <td>{{ row.couleur }}</td>
+                        <td>{{ row.age }}</td>
                         <td>
-                            <a href="{{ path('modifier', {'id': row.id}) }}" class="btn btn-warning">Modifier</a>
-                            <a href="{{ path('supprimer', {'id': row.id}) }}" class="btn btn-danger">Supprimer</a>
+                            <a href="{{ path('modifier', {'id': loop.index}) }}" class="btn btn-warning">Modifier</a>
+                            <a href="{{ path('supprimer', {'id': loop.index}) }}" class="btn btn-danger">Supprimer</a>
                         </td>
                     </tr>
                 {% endfor %}

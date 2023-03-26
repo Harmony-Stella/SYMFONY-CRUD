@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="container-xxl flex-grow-1 container-p-y">
+		<h3 style="text-transform: uppercase; text-align: center;">Listes des transactions</h3>
+		<a href="{{url('app_ajout_transaction')}}"><button type="button" class="btn rounded-pill btn-primary">Ajouter</button></a>
+		<table class="table table-condensed">
+			<thead>
+				<tr>
+					<th>N°</th>
+					<th>Expediteur</th>
+                    <th>Receveur</th>
+					<th>Type de la transaction</th>
+					<th>Montant de la trnsaction</th>
+                    <th>Date de la transaction</th>
+                    <th>Statut</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for transaction in transactions %}
+					<tr>
+						<td>{{loop.index}}</td>
+						<td>{{transaction.expediteur}}</td>
+						<td>{{transaction.receveur}}</td>
+                        <td>{{transaction.typeTransaction}}</td>
+                        <td>{{transaction.montant}}</td>
+                        <td>{{transaction.getDateTransaction()|date('d-m-Y H:i:s')}}</td>
+                        <td>{{transaction.statutTransaction}}</td>
+						<td>
+                            <a class="btn rounded-pill btn-warning" href="{{url('app_modifier_transaction', {'id':transaction.id})}}">Modifier</a>
+							<a class="btn rounded-pill btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">Supprimer</a>
+							<div class="modal" id="myModal">
+								<div class="modal-dialog">
+									<div class="modal-content">
+
+									<!-- Modal Header -->
+									<div class="modal-header">
+										<h4 class="modal-title">Suppression d'une transaction</h4>
+									</div>
+
+									<!-- Modal body -->
+									<div class="modal-body">
+										Cette action est irréversible !
+										Voulez-vous supprimer ce transaction ?
+									</div>
+
+									<!-- Modal footer -->
+									<div class="modal-footer">
+										<a class="btn rounded-pill btn-danger" href="{{url('app_supprimer_transaction', {'id':transaction.id})}}">Confirmez</a>
+										<a class="btn btn-secondary" data-bs-dismiss="modal">Annuler</a>
+									</div>
+
+									</div>
+								</div>
+							</div>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

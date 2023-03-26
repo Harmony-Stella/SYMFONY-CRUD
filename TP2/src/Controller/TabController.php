@@ -39,6 +39,7 @@ class TabController extends AbstractController
     #[Route('/modifier/{id}', name: 'modifier')]
     public function modifier(int $id): Response
     {
+        // Récupérer l'élément du tableau associatif en fonction de l'ID
         // Afficher la vue de modification avec l'élément récupéré
         return $this->render('tab/modifier.html.twig', [
             

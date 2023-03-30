@@ -56,7 +56,7 @@ class TransactionController extends AbstractController
 
     /*Suppression de la transaction*/
     #[Route('/supprimer/{id<\d+>}', name: 'app_supprimer_transaction')]
-    public function supprimerLivre(Transaction $transaction, EntityManagerInterface $em)
+    public function supprimerTransaction(Transaction $transaction, EntityManagerInterface $em)
     {
         $em ->remove($transaction);
         $em ->flush();

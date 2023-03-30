@@ -1,0 +1,64 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification d'un film
+
+
+{% endblock %}
+{% block body %}
+
+  <h2 style="text-transform: uppercase; text-align: center;">Modification d'un Film</h2>
+
+<a href="{{url('app_films')}}"><button type="button" class="btn rounded-pill btn-success">Retour</button></a>
+<div class="form-horizontal offset-md-3">
+	{{ form_start(form) }}
+		<div class=" form-group ">
+			<label class="control-label col-sm-2 " for="nomFilm">Nom du Film</label>
+			<div class="col-sm-10 ">
+				{{form_widget(form.nomFilm, {'attr': {'class': 'form-control','type':'text', placeholder:'Le nom du Film'}}) }}
+			</div>
+		</div>
+
+        <div class=" form-group ">
+			<label class="control-label col-sm-2 " for="auteurFilm">Auteur du Film</label>
+			<div class="col-sm-10 ">
+				{{form_widget(form.auteurFilm, {'attr': {'class': 'form-control','type':'text', placeholder:'Le nom d l Auteur du Film'}}) }}
+			</div>
+		</div>
+		<div class="form-group ">
+			<label class="control-label col-sm-2 " for="acteurFilm">Acteur du Film</label>
+			<div class="col-sm-10 ">
+				{{form_widget(form.acteurFilm, {'attr': {'class': 'form-control','type':'text', placeholder:'acteur du Film'}}) }}
+			</div>
+		</div>
+
+		<div class=" form-group ">
+			<label class="control-label col-sm-2 " for="dateSortieFilm">Date de sortie du film</label>
+			<div class="col-sm-10 ">
+				{{form_widget(form.dateSortieFilm, {'attr': {'class': 'form-control','type':'dateTime'}}) }}
+			</div>
+		</div>
+
+        <div class=" form-group ">
+			<label class="control-label col-sm-2 " for="dateHeureDiffusion">Date de diffusion</label>
+			<div class="col-sm-10 ">
+				{{form_widget(form.dateHeureDiffusion, {'attr': {'class': 'form-control','type':'dateTime'}}) }}
+			</div>
+		</div>
+
+        <div class=" form-group ">
+			<label class="control-label col-sm-2 " for="dureeFilm">Duree du Film</label>
+			<div class="col-sm-10 ">
+				{{form_widget(form.dureeFilm, {'attr': {'class': 'form-control','type':'Time'}}) }}
+			</div>
+		</div>
+
+		<div class="form-group button mb-3">
+			<div class="col-sm-offset-2 col-sm-10 ">
+				<button type="submit" name="modifier" class="btn btn-primary mr-2">Modifier</button>
+			</div>
+		</div>
+	{{ form_end(form) }}
+</div>
+
+{% endblock %}
